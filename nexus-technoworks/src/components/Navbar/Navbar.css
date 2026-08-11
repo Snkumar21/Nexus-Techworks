@@ -1,0 +1,166 @@
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* NAVBAR CONTAINER */
+.navbar-container {
+  width: min(100% - 40px, var(--container-width));
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* LOGO */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+/* LIGHT / DARK LOGO */
+/* Light system */
+.logo-light {
+  display: block;
+}
+
+.logo-dark {
+  display: none;
+}
+
+/* Dark system */
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: block;
+  }
+}
+
+/* NAVIGATION MENU */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* NAVIGATION LINK */
+.nav-link {
+  position: relative;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition:
+    color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* ACTIVE LINK */
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: background-color var(--transition-fast);
+}
+
+/* CONTACT BUTTON */
+.navbar-contact {
+  padding: 11px 20px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background-color var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.navbar-contact:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+
+/* DARK MODE CONTACT BUTTON */
+
+@media (prefers-color-scheme: dark) {
+
+  .navbar-contact {
+    background-color: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .navbar-contact:hover {
+    background-color: var(--primary-hover);
+  }
+
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .navbar-container {
+    gap: 20px;
+  }
+
+  .navbar-menu {
+    gap: 18px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+
+  .logo {
+    width: 135px;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-container {
+    min-height: 70px;
+  }
+
+  .logo {
+    width: 140px;
+  }
+
+}

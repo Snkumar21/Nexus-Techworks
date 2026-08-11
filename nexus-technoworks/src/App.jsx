@@ -1,9 +1,11 @@
+import { BrowserRouter } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+
 function App() {
   return (
-    <div>
-      <h1>Nexus Technoworks</h1>
-      <p>Tech • Digital • Business Solutions</p>
-    </div>
+    <BrowserRouter>
+      <MainLayout />
+    </BrowserRouter>
   );
 }
 

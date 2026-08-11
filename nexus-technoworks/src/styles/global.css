@@ -1,19 +1,41 @@
+/* GLOBAL */
 body {
   font-family: var(--font-primary);
-  background: var(--white);
-  color: var(--secondary-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #root {
   min-height: 100vh;
 }
 
+/* CONTAINER */
 .container {
   width: min(100% - 40px, var(--container-width));
   margin: 0 auto;
 }
 
+/* SECTION */
 .section {
   padding: 100px 0;
+}
+
+/* LINKS */
+a {
+  color: inherit;
+}
+
+/* IMAGES */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* BUTTON */
+button {
+  font-family: inherit;
 }
