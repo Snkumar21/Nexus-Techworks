@@ -38,6 +38,7 @@
     letter-spacing: -4px;
     color: var(--text-primary);
     transition: color var(--transition-normal);
+    cursor: pointer;
 }
 
 .hero h1 span {
