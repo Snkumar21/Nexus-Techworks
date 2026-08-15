@@ -1,51 +1,83 @@
 :root {
-  /* BRAND COLORS */
-  --primary-color: #e31b23;
-  --primary-hover: #b9141b;
 
-  /* LIGHT THEME */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7f7f7;
-  --bg-tertiary: #eeeeee;
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-muted: #777777;
-  --border-color: #e5e5e5;
-  --card-background: #ffffff;
+    /* =========================
+        BRAND
+    ========================= */
 
-  /* COMMON */
-  --white: #ffffff;
-  --black: #000000;
-  --container-width: 1200px;
-  --font-primary: "Inter", sans-serif;
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+    --primary-color: #e31b23;
+    --primary-hover: #b9141b;
+
+
+    /* =========================
+        DEFAULT LIGHT
+    ========================= */
+
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f7f7;
+    --bg-tertiary: #eeeeee;
+
+    --text-primary: #111111;
+    --text-secondary: #555555;
+    --text-muted: #777777;
+
+    --border-color: #e5e5e5;
+
+    --card-background: #ffffff;
+
+
+    /* =========================
+        COMMON
+    ========================= */
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --container-width: 1200px;
+
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
 }
 
-/* DARK THEME */
+/* =================================
+    DARK THEME
+================================= */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #e31b23;
-    --primary-hover: #ff3038;
+html.dark-theme {
 
-    /* Background */
     --bg-primary: #000000;
     --bg-secondary: #111111;
     --bg-tertiary: #1a1a1a;
 
-    /* Text */
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
     --text-muted: #999999;
 
-    /* Borders */
     --border-color: #292929;
 
-    /* Cards */
     --card-background: #111111;
-  }
+
+    --primary-color: #e31b23;
+    --primary-hover: #ff3038;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    html:not(.light-theme):not(.dark-theme) {
+
+        --bg-primary: #000000;
+        --bg-secondary: #111111;
+        --bg-tertiary: #1a1a1a;
+
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --text-muted: #999999;
+
+        --border-color: #292929;
+
+        --card-background: #111111;
+    }
 }

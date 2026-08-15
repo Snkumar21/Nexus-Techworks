@@ -1,166 +1,285 @@
-/* NAVBAR */
+/* =========================
+    NAVBAR
+========================= */
 .navbar {
-  width: 100%;
-  background-color: var(--bg-primary);
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition:
+        background-color var(--transition-normal),
+        border-color var(--transition-normal);
 }
 
-/* NAVBAR CONTAINER */
 .navbar-container {
-  width: min(100% - 40px, var(--container-width));
-  min-height: 78px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
+    width: min(100% - 40px, var(--container-width));
+    min-height: 78px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-/* LOGO */
+/* =========================
+    LOGO
+========================= */
 .navbar-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .logo {
-  width: 150px;
-  height: auto;
-  display: block;
+    width: 150px;
+    height: auto;
+    display: block;
 }
 
-/* LIGHT / DARK LOGO */
-/* Light system */
+/* Light theme */
 .logo-light {
-  display: block;
+    display: block;
 }
 
 .logo-dark {
-  display: none;
-}
-
-/* Dark system */
-@media (prefers-color-scheme: dark) {
-  .logo-light {
     display: none;
-  }
-  .logo-dark {
+}
+
+/* Dark theme */
+html.dark-theme .logo-light {
+    display: none;
+}
+
+html.dark-theme .logo-dark {
     display: block;
-  }
 }
 
-/* NAVIGATION MENU */
+/* System dark */
+@media (prefers-color-scheme: dark) {
+    html:not(.light-theme):not(.dark-theme) .logo-light {
+        display: none;
+    }
+
+    html:not(.light-theme):not(.dark-theme) .logo-dark {
+        display: block;
+    }
+}
+
+/* =========================
+    MENU
+========================= */
 .navbar-menu {
-  display: flex;
-  align-items: center;
-  gap: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
-/* NAVIGATION LINK */
 .nav-link {
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-primary);
-  transition:
-    color var(--transition-fast);
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition:
+        color var(--transition-fast);
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-/* ACTIVE LINK */
 .nav-link.active {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .nav-link.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 100%;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: background-color var(--transition-fast);
-}
-
-/* CONTACT BUTTON */
-.navbar-contact {
-  padding: 11px 20px;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 600;
-  transition:
-    background-color var(--transition-normal),
-    transform var(--transition-normal);
-}
-
-.navbar-contact:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
-
-/* DARK MODE CONTACT BUTTON */
-
-@media (prefers-color-scheme: dark) {
-
-  .navbar-contact {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
     background-color: var(--primary-color);
-    color: #ffffff;
-  }
-
-  .navbar-contact:hover {
-    background-color: var(--primary-hover);
-  }
-
 }
 
+/* =========================
+    NAVBAR ACTIONS
+========================= */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-/* RESPONSIVE */
+/* =========================
+    THEME MENU
+========================= */
+.theme-menu {
+    position: relative;
+}
 
-@media (max-width: 900px) {
+/* =========================
+    THEME TRIGGER
+========================= */
+.theme-menu-trigger {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
 
-  .navbar-container {
-    gap: 20px;
-  }
+.theme-menu-trigger:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}
 
-  .navbar-menu {
-    gap: 18px;
-  }
+/* =========================
+    THEME DROPDOWN
+========================= */
+.theme-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 190px;
+    padding: 8px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    z-index: 1100;
+    animation: themeDropdownIn 0.18s ease;
+}
 
-  .nav-link {
+/* =========================
+    DROPDOWN ANIMATION
+========================= */
+@keyframes themeDropdownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+    DROPDOWN TITLE
+========================= */
+.theme-dropdown-title {
+    padding: 8px 10px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* =========================
+    THEME OPTION
+========================= */
+.theme-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-primary);
     font-size: 13px;
-  }
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast);
+}
 
-  .logo {
-    width: 135px;
-  }
+.theme-option:hover {
+    background-color: var(--bg-secondary);
+    color: var(--primary-color);
+}
 
+/* Active option */
+.theme-option.active {
+    background-color: var(--bg-secondary);
+    color: var(--primary-color);
+}
+
+/* =========================
+    THEME ICON
+========================= */
+.theme-option-icon {
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* =========================
+    THEME TEXT
+========================= */
+.theme-option-text {
+    flex: 1;
+    font-weight: 500;
+}
+
+/* =========================
+    CHECK ICON
+========================= */
+.theme-check {
+    font-size: 11px;
+    color: var(--primary-color);
+}
+
+/* =========================
+    MOBILE
+========================= */
+@media (max-width: 900px) {
+    .navbar-menu {
+        gap: 18px;
+    }
+
+    .navbar-actions {
+        gap: 10px;
+    }
+
+    .logo {
+        width: 135px;
+    }
 }
 
 @media (max-width: 700px) {
+    .navbar-menu {
+        display: none;
+    }
 
-  .navbar-menu {
-    display: none;
-  }
+    .navbar-container {
+        min-height: 70px;
+    }
 
-  .navbar-container {
-    min-height: 70px;
-  }
+    .logo {
+        width: 140px;
+    }
 
-  .logo {
-    width: 140px;
-  }
-
+    .navbar-contact {
+        display: none;
+    }
 }
