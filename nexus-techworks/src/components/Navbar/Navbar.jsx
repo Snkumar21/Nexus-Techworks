@@ -55,7 +55,7 @@ const Navbar = () => {
                         Projects
                     </NavLink>
 
-                    <NavLink to="/clients" className="nav-link">
+                    <NavLink to="/career" className="nav-link">
                         Career
                     </NavLink>
 

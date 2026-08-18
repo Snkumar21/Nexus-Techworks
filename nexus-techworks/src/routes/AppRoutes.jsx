@@ -1,16 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
 import Home from "../pages/Home/Home";
+import About from "../pages/About/About";
 
 const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             
-            <Route
-                path="/about"
-                element={<h1>About Nexus Technoworks</h1>}
-            />
+            <Route path="/about" element={<About />} />
 
             <Route
                 path="/services"
@@ -23,8 +21,8 @@ const AppRoutes = () => {
             />
 
             <Route
-                path="/clients"
-                element={<h1>Our Clients</h1>}
+                path="/career"
+                element={<h1>Career</h1>}
             />
 
             <Route
