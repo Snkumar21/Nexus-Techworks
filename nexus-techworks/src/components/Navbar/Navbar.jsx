@@ -12,7 +12,6 @@ const Navbar = () => {
     const [themeMenuOpen, setThemeMenuOpen] = useState(false);
     const handleThemeChange = (newTheme) => {
         setTheme(newTheme);
-        // Theme select hone ke baad dropdown close
         setThemeMenuOpen(false);
     };
 
@@ -20,9 +19,7 @@ const Navbar = () => {
         <header className="navbar">
             <div className="navbar-container">
 
-                {/* =========================
-                    LOGO
-                ========================= */}
+                {/* LOGO */}
                 <NavLink
                     to="/"
                     className="navbar-logo"
@@ -40,9 +37,7 @@ const Navbar = () => {
                     />
                 </NavLink>
 
-                {/* =========================
-                    NAVIGATION
-                ========================= */}
+                {/* NAVIGATION */}
                 <nav className="navbar-menu">
                     <NavLink to="/" className="nav-link">
                         Home
@@ -69,9 +64,7 @@ const Navbar = () => {
                     </NavLink>
                 </nav>
 
-                {/* =========================
-                    ACTIONS
-                ========================= */}
+                {/* ACTIONS */}
                 <div className="navbar-actions">
                     {/* Let's Talk */}
                     <NavLink
@@ -81,9 +74,7 @@ const Navbar = () => {
                         Let's Talk
                     </NavLink>
 
-                    {/* =========================
-                        THEME MENU
-                    ========================= */}
+                    {/* THEME MENU */}
                     <div className="theme-menu">
                         {/* Theme Button */}
                         <button
