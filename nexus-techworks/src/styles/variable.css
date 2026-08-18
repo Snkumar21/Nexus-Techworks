@@ -1,17 +1,10 @@
 :root {
 
-    /* =========================
-        BRAND
-    ========================= */
-
+    /* BRAND */
     --primary-color: #e31b23;
     --primary-hover: #b9141b;
 
-
-    /* =========================
-        DEFAULT LIGHT
-    ========================= */
-
+    /* DEFAULT LIGHT */
     --bg-primary: #ffffff;
     --bg-secondary: #f7f7f7;
     --bg-tertiary: #eeeeee;
@@ -24,11 +17,7 @@
 
     --card-background: #ffffff;
 
-
-    /* =========================
-        COMMON
-    ========================= */
-
+    /* COMMON */
     --white: #ffffff;
     --black: #000000;
 
@@ -42,12 +31,8 @@
     --radius-lg: 20px;
 }
 
-/* =================================
-    DARK THEME
-================================= */
-
+/* DARK THEME */
 html.dark-theme {
-
     --bg-primary: #000000;
     --bg-secondary: #111111;
     --bg-tertiary: #1a1a1a;
@@ -67,7 +52,6 @@ html.dark-theme {
 @media (prefers-color-scheme: dark) {
 
     html:not(.light-theme):not(.dark-theme) {
-
         --bg-primary: #000000;
         --bg-secondary: #111111;
         --bg-tertiary: #1a1a1a;
