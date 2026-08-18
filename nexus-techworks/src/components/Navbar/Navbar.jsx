@@ -61,7 +61,7 @@ const Navbar = () => {
                     </NavLink>
 
                     <NavLink to="/clients" className="nav-link">
-                        Clients
+                        Career
                     </NavLink>
 
                     <NavLink to="/founder" className="nav-link">
