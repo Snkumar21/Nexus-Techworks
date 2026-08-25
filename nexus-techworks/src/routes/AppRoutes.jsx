@@ -6,6 +6,7 @@ import Services from "../pages/Services/Services";
 import Projects from "../pages/Projects/Projects";
 import Career from "../pages/Career/Career";
 import CareerApply from "../pages/Career/CareerApply";
+import Contact from "../pages/Contact/Contact";
 
 const AppRoutes = () => {
     return (
@@ -23,9 +24,11 @@ const AppRoutes = () => {
             <Route path="/career/apply" element={<CareerApply />} />
 
             <Route
-                path="/contact"
-                element={<h1>Contact Nexus Technoworks</h1>}
+                path="/founder"
+                element={<h1>Founder</h1>}
             />
+
+            <Route path="/contact" element={<Contact />} />
 
         </Routes>
     );
