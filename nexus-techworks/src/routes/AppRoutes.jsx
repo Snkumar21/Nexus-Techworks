@@ -6,6 +6,7 @@ import Services from "../pages/Services/Services";
 import Projects from "../pages/Projects/Projects";
 import Career from "../pages/Career/Career";
 import CareerApply from "../pages/Career/CareerApply";
+import Founder from "../pages/Founder/Founder";
 import Contact from "../pages/Contact/Contact";
 
 const AppRoutes = () => {
@@ -23,10 +24,7 @@ const AppRoutes = () => {
 
             <Route path="/career/apply" element={<CareerApply />} />
 
-            <Route
-                path="/founder"
-                element={<h1>Founder</h1>}
-            />
+            <Route path="/founder" element={<Founder/>} />
 
             <Route path="/contact" element={<Contact />} />
 
