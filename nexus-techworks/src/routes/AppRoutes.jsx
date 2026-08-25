@@ -13,23 +13,14 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            
             <Route path="/about" element={<About />} />
-
             <Route path="/services" element={<Services />} />
-
             <Route path="/projects" element={<Projects />} />
-
             <Route path="/career" element={<Career/>} />
-
             <Route path="/career/apply" element={<CareerApply />} />
-
             <Route path="/founder" element={<Founder/>} />
-
             <Route path="/contact" element={<Contact />} />
-
         </Routes>
     );
 };
-
 export default AppRoutes;
