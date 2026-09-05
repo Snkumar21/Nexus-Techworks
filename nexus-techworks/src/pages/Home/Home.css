@@ -238,6 +238,190 @@
     color: var(--text-secondary);
 }
 
+/* =========================
+    SOFTWARE & APP MARKETPLACE
+========================= */
+
+.software-marketplace {
+    padding: 120px 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition:
+        background-color var(--transition-normal),
+        color var(--transition-normal);
+}
+
+/* MARKETPLACE LAYOUT */
+.marketplace-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 80px;
+}
+
+/* MARKETPLACE CONTENT */
+.marketplace-content h2 {
+    max-width: 700px;
+    margin-bottom: 25px;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+    transition: color var(--transition-normal);
+}
+
+.marketplace-content h2 span {
+    color: var(--primary-color);
+}
+
+/* Main Description */
+.marketplace-content > p {
+    max-width: 650px;
+    margin-bottom: 40px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    transition: color var(--transition-normal);
+}
+
+/* MARKETPLACE FEATURES */
+.marketplace-features {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.marketplace-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* Feature Number */
+.marketplace-feature > span {
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: 700;
+    transition:
+        background-color var(--transition-normal),
+        color var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.marketplace-feature:hover > span {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Feature Heading */
+.marketplace-feature h4 {
+    margin-bottom: 7px;
+    font-size: 18px;
+    color: var(--text-primary);
+    transition: color var(--transition-normal);
+}
+
+/* Feature Description */
+.marketplace-feature p {
+    max-width: 500px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    transition: color var(--transition-normal);
+}
+
+/* MARKETPLACE BUTTON */
+.marketplace-btn {
+    display: inline-block;
+}
+
+/* MARKETPLACE VISUAL */
+.marketplace-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Cards */
+.marketplace-card {
+    padding: 35px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    transition:
+        background-color var(--transition-normal),
+        border-color var(--transition-normal),
+        color var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.marketplace-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+/* BUY / SELL Label */
+.marketplace-card-label {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+/* Card Heading */
+.marketplace-card h3 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: var(--text-primary);
+    transition: color var(--transition-normal);
+}
+
+/* Card Description */
+.marketplace-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    transition: color var(--transition-normal);
+}
+
+/* BUY / SELL DIVIDER */
+.marketplace-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marketplace-divider span {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 20px;
+    transition:
+        background-color var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+.marketplace-divider span:hover {
+    background-color: var(--primary-hover);
+    transform: rotate(180deg);
+}
+
 /* PROJECTS */
 .projects-preview {
     padding: 120px 0;
@@ -255,7 +439,6 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-
     .hero-container {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -266,6 +449,10 @@
         align-items: flex-start;
     }
 
+    .marketplace-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
 }
 
 /* MOBILE */
@@ -310,5 +497,53 @@
 
     .service-card {
         min-height: 0;
+    }
+
+    .software-marketplace {
+        padding: 80px 0;
+    }
+
+    .marketplace-container {
+        gap: 40px;
+    }
+
+    .marketplace-content h2 {
+        font-size: 38px;
+        letter-spacing: -2px;
+    }
+
+    .marketplace-content > p {
+        font-size: 15px;
+    }
+
+    .marketplace-feature {
+        gap: 15px;
+    }
+
+    .marketplace-feature > span {
+        min-width: 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .marketplace-feature h4 {
+        font-size: 17px;
+    }
+
+    .marketplace-feature p {
+        font-size: 14px;
+    }
+
+    .marketplace-card {
+        padding: 25px;
+    }
+
+    .marketplace-card h3 {
+        font-size: 22px;
+    }
+
+    .marketplace-btn {
+        width: 100%;
+        text-align: center;
     }
 }

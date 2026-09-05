@@ -127,6 +127,93 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* Software & App Marketplace */}
+            <section className="software-marketplace">
+                <div className="container marketplace-container">
+
+                    <div className="marketplace-content">
+                        <span className="section-label">
+                            SOFTWARE & APP MARKETPLACE
+                        </span>
+
+                        <h2>
+                            Have a Software or App to
+                            <span> Buy or Sell?</span>
+                        </h2>
+
+                        <p>
+                            Whether you're looking to sell an existing software product,
+                            mobile application or digital solution — or searching for the
+                            right product to acquire for your business — Nexus Techworks
+                            can help you connect with the right opportunities.
+                        </p>
+
+                        <div className="marketplace-features">
+                            <div className="marketplace-feature">
+                                <span>01</span>
+                                <div>
+                                    <h4>Sell Your Product</h4>
+                                    <p>
+                                        Looking to sell your software, SaaS platform,
+                                        website or mobile application? Connect with us
+                                        to discuss the opportunity.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="marketplace-feature">
+                                <span>02</span>
+                                <div>
+                                    <h4>Purchase Software & Apps</h4>
+                                    <p>
+                                        Looking for an existing digital product or
+                                        software solution? Tell us your requirements
+                                        and we'll explore suitable opportunities.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="marketplace-feature">
+                                <span>03</span>
+                                <div>
+                                    <h4>Valuation & Documentation</h4>
+                                    <p>
+                                        Get professional product valuation,
+                                        business documentation and supporting
+                                        materials for software transactions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/contact" className="btn-primary marketplace-btn">
+                            Discuss Your Requirement →
+                        </a>
+                    </div>
+
+                    <div className="marketplace-visual">
+
+                        <div className="marketplace-card sell-card">
+                            <span className="marketplace-card-label">SELL</span>
+                            <h3>Have a Digital Product?</h3>
+                            <p>Software • SaaS • Web Apps • Mobile Apps</p>
+                        </div>
+
+                        <div className="marketplace-divider">
+                            <span>↔</span>
+                        </div>
+
+                        <div className="marketplace-card buy-card">
+                            <span className="marketplace-card-label">BUY</span>
+                            <h3>Looking to Acquire?</h3>
+                            <p>Discover opportunities that match your requirements.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
             {/* Projects Preview */}
             <section className="projects-preview" id="projects">
                 <div className="container">
