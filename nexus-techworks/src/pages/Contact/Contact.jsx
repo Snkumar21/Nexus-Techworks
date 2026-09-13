@@ -21,12 +21,57 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (event) => {
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("Contact enquiry:", formData);
-        alert(
-            "Thank you for contacting Nexus Techworks. We will get back to you soon."
-        );
+
+        try {
+            setLoading(true);
+
+            const response = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/contact`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(
+                    data.message || "Something went wrong."
+                );
+            }
+
+            alert(
+                "Thank you for contacting Nexus Techworks. We will get back to you soon."
+            );
+
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                company: "",
+                service: "",
+                budget: "",
+                message: "",
+            });
+
+        } catch (error) {
+            console.error("Contact form error:", error);
+
+            alert(
+                "We couldn't send your enquiry. Please try again."
+            );
+
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -74,7 +119,7 @@ const Contact = () => {
                             </span>
 
                             <a href="mailto:technexus.6926@gmail.com">
-                                technexus.6926@gmail.com
+                                nexustechworks30@gmail.com
                             </a>
                         </div>
 
@@ -334,9 +379,11 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 className="contact-submit"
+                                disabled={loading}
                             >
-                                Send Enquiry
-                                <span>↗</span>
+                                {loading ? "Sending..." : "Send Enquiry"}
+
+                                {!loading && <span>↗</span>}
                             </button>
 
                             <p className="form-note">
