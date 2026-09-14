@@ -155,17 +155,21 @@ const Contact = () => {
                                 </a>
 
                                 <a
-                                    href="#"
+                                    href="https://www.linkedin.com/company/nexus-techworks/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label="LinkedIn"
                                 >
                                     <i className="fab fa-linkedin-in"></i>
                                 </a>
 
                                 <a
-                                    href="#"
-                                    aria-label="GitHub"
+                                    href="https://www.facebook.com/profile.php?id=61593920057034"
+                                    aria-label="Facebook"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
-                                    <i className="fab fa-github"></i>
+                                    <i className="fab fa-facebook"></i>
                                 </a>
                             </div>
                         </div>

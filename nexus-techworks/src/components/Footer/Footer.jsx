@@ -96,7 +96,7 @@ const Footer = () => {
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                         <a
-                            href="#"
+                            href="https://www.linkedin.com/company/nexus-techworks/"
                             aria-label="LinkedIn"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -104,7 +104,7 @@ const Footer = () => {
                             <i class="fa-brands fa-linkedin"></i>
                         </a>
                         <a
-                            href="#"
+                            href="https://www.youtube.com/channel/UCoh5uueXF2KBgHPnpITqZyA"
                             aria-label="YouTube"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -112,12 +112,12 @@ const Footer = () => {
                             <i class="fa-brands fa-youtube"></i>
                         </a>
                         <a
-                            href="#"
-                            aria-label="GitHub"
+                            href="https://www.facebook.com/profile.php?id=61593920057034"
+                            aria-label="Facebook"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <i class="fa-brands fa-github"></i>
+                            <i class="fa-brands fa-facebook"></i>
                         </a>
                     </div>
                 </div>
