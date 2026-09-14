@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-
 import CurrencySelector from "../../components/CurrencySelector/CurrencySelector";
-
 import "./Services.css";
 
 const services = [
@@ -101,9 +99,7 @@ const Services = () => {
         fetchRates();
     }, []);
 
-    /* ========================================
-        FORMAT PRICE
-    ======================================== */
+    /* FORMAT PRICE */
     const formatPrice = (usdPrice) => {
         const rate = rates[currency] || 1;
         const convertedPrice = usdPrice * rate;

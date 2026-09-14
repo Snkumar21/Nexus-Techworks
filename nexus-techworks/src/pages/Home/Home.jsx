@@ -1,6 +1,19 @@
 import "./Home.css";
+import nexus from "../../assets/images/nexus-techworks.png";
 
 const Home = () => {
+    const projects = [
+        {
+            _id: "1",
+            category: "Software Development",
+            title: "Nexus Platform",
+            description: "A digital platform for business transformation.",
+            image: nexus,
+            technologies: ["React", "Node.js", "Cloud"],
+            projectUrl: "#"
+        }
+    ];
+
     return (
         <main>
             {/* Hero Section */}
@@ -192,7 +205,6 @@ const Home = () => {
                     </div>
 
                     <div className="marketplace-visual">
-
                         <div className="marketplace-card sell-card">
                             <span className="marketplace-card-label">SELL</span>
                             <h3>Have a Digital Product?</h3>
@@ -208,9 +220,7 @@ const Home = () => {
                             <h3>Looking to Acquire?</h3>
                             <p>Discover opportunities that match your requirements.</p>
                         </div>
-
                     </div>
-
                 </div>
             </section>
 
@@ -228,6 +238,54 @@ const Home = () => {
                         Explore selected projects built with technology,
                         creativity and purpose.
                     </p>
+                
+                    <div className="projects-grid">
+                        {projects.map((project) => (
+                            <article className="project-card" key={project._id}>
+
+                                <div className="project-image">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                    />
+                                </div>
+
+                                <div className="project-content">
+                                    <span>
+                                        {project.category}
+                                    </span>
+
+                                    <h3>
+                                        {project.title}
+                                    </h3>
+
+                                    <p>
+                                        {project.description}
+                                    </p>
+
+                                    <div className="project-technologies">
+                                        {project.technologies.map((tech) => (
+                                            <span key={tech}>
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {project.projectUrl && (
+                                        <a
+                                            href={project.projectUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            View Project →
+                                        </a>
+                                    )}
+
+                                </div>
+
+                            </article>
+                        ))}
+                    </div>
                 </div>
             </section>
         </main>
