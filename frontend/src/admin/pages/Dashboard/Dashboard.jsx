@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
@@ -64,7 +63,6 @@ const quickActions = [
 
 const Dashboard = () => {
     const navigate = useNavigate();
-
     const [stats, setStats] = useState(null);
     const [apiStatus, setApiStatus] = useState("Checking");
     const [error, setError] = useState("");
