@@ -1,0 +1,169 @@
+.application-manager-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.application-manager-toolbar select,
+.application-manager-toolbar button,
+.application-status-control select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font: inherit;
+}
+
+.application-manager-toolbar button,
+.resume-view-button,
+.application-delete-button {
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.application-manager-toolbar button:hover,
+.resume-view-button:hover,
+.application-delete-button:hover {
+    opacity: 0.85;
+}
+
+.application-manager-toolbar button:disabled,
+.resume-view-button:disabled,
+.application-delete-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.career-manager-error {
+    padding: 12px 14px;
+    border: 1px solid #dc2626;
+    border-radius: var(--radius-sm);
+    color: #dc2626;
+    overflow-wrap: anywhere;
+}
+
+.application-manager-list {
+    display: grid;
+    gap: 18px;
+}
+
+.career-manager-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 22px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md, 12px);
+    background: var(--bg-primary);
+}
+
+.application-manager-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.application-manager-details h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.application-manager-details p {
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+.application-manager-details a {
+    color: var(--primary-color);
+    overflow-wrap: anywhere;
+}
+
+.application-resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 12px 0;
+}
+
+.application-resume-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.resume-view-button {
+    padding: 10px 14px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+    background: var(--primary-color);
+    color: #fff;
+    font: inherit;
+}
+
+.resume-file-name {
+    color: var(--text-secondary);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.application-manager-details small {
+    display: block;
+    margin-top: 12px;
+    color: var(--text-secondary);
+}
+
+.application-status-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 170px;
+}
+
+.application-status-control label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.application-delete-button {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 1px solid #dc2626;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: #dc2626;
+    font: inherit;
+}
+
+@media (max-width: 700px) {
+    .application-manager-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .application-manager-toolbar select,
+    .application-manager-toolbar button {
+        width: 100%;
+    }
+
+    .career-manager-item {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .application-status-control {
+        width: 100%;
+    }
+
+    .application-status-control select {
+        width: 100%;
+    }
+
+    .application-delete-button {
+        width: 100%;
+    }
+}

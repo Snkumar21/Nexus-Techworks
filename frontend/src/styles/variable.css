@@ -1,0 +1,35 @@
+:root {
+    /* BRAND */
+    --primary-color: #e31b23;
+    --primary-hover: #b9141b;
+
+    /* BACKGROUNDS */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f7f7;
+    --bg-tertiary: #eeeeee;
+    --card-background: #ffffff;
+
+    /* TEXT */
+    --text-primary: #111111;
+    --text-secondary: #555555;
+    --text-muted: #777777;
+
+    /* BORDER */
+    --border-color: #e5e5e5;
+
+    /* COMMON COLORS */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* LAYOUT */
+    --container-width: 1200px;
+
+    /* TRANSITIONS */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+
+    /* BORDER RADIUS */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+}

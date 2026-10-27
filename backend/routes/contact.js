@@ -1,200 +1,109 @@
 import express from "express";
 import nodemailer from "nodemailer";
+import Enquiry from "../models/Enquiry.js";
 
 const router = express.Router();
+const escapeHtml = (value = "") =>
+    String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+    })[char]);
 
 router.post("/", async (req, res) => {
-
     try {
+        const { name, email, phone, company, service, budget, message } = req.body || {};
 
-        const {
-            name,
-            email,
-            phone,
-            company,
-            service,
-            budget,
-            message,
-        } = req.body;
-
-        if (!name || !email || !service || !message) {
+        if (
+            typeof name !== "string" ||
+            !name.trim() ||
+            typeof email !== "string" ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ||
+            typeof service !== "string" ||
+            !service.trim() ||
+            typeof message !== "string" ||
+            !message.trim()
+        ) {
             return res.status(400).json({
                 success: false,
-                message: "Required fields are missing.",
+                message: "Please complete all required fields correctly.",
             });
         }
 
+        const clean = (value, max) => typeof value === "string" ? value.trim().slice(0, max) : "";
 
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_APP_PASSWORD,
-            },
+        const enquiry = await Enquiry.create({
+            name: clean(name, 120),
+            email: clean(email, 254).toLowerCase(),
+            phone: clean(phone, 30),
+            company: clean(company, 160),
+            service: clean(service, 160),
+            budget: clean(budget, 100),
+            message: clean(message, 5000),
         });
 
+        try {
+            if (!process.env.SMTP_USER || !process.env.SMTP_PASS) { throw new Error("SMTP configuration is missing."); }
 
-        const mailOptions = {
+            const transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS, },
+            });
 
-            from: `"Nexus Techworks Website" <${process.env.EMAIL_USER}>`,
-
-            to: "nexustechworks30@gmail.com",
-
-            replyTo: email,
-
-            subject: `New Nexus Techworks Enquiry - ${service}`,
-
-            html: `
-                <div
-                    style="
-                        font-family: Arial, sans-serif;
-                        max-width: 650px;
-                        margin: auto;
-                        background: #ffffff;
-                        border: 1px solid #eeeeee;
-                    "
-                >
-
-                    <div
-                        style="
-                            background: #111111;
-                            padding: 30px;
-                            text-align: center;
-                        "
-                    >
-
-                        <h1
-                            style="
-                                color: #ff1e1e;
-                                margin: 0;
-                            "
-                        >
-                            NEXUS TECHWORKS
-                        </h1>
-
-                        <p
-                            style="
-                                color: #ffffff;
-                                margin-top: 8px;
-                            "
-                        >
-                            New Website Enquiry
-                        </p>
-
-                    </div>
-
-
-                    <div style="padding: 30px;">
-
-                        <h2>New Client Enquiry</h2>
-
-
-                        <p>
-                            <strong>Name:</strong>
-                            ${name}
-                        </p>
-
-
-                        <p>
-                            <strong>Email:</strong>
-                            ${email}
-                        </p>
-
-
-                        <p>
-                            <strong>Phone:</strong>
-                            ${phone || "Not provided"}
-                        </p>
-
-
-                        <p>
-                            <strong>Company / Brand:</strong>
-                            ${company || "Not provided"}
-                        </p>
-
-
-                        <p>
-                            <strong>Service:</strong>
-                            ${service}
-                        </p>
-
-
-                        <p>
-                            <strong>Estimated Budget:</strong>
-                            ${budget || "Not specified"}
-                        </p>
-
-
-                        <hr
-                            style="
-                                border: none;
-                                border-top: 1px solid #eeeeee;
-                                margin: 25px 0;
-                            "
-                        />
-
-
-                        <h3>Project Details</h3>
-
-                        <p
-                            style="
-                                line-height: 1.7;
-                                white-space: pre-line;
-                            "
-                        >
-                            ${message}
-                        </p>
-
-
-                        <hr
-                            style="
-                                border: none;
-                                border-top: 1px solid #eeeeee;
-                                margin: 25px 0;
-                            "
-                        />
-
-
-                        <p
-                            style="
-                                color: #777777;
-                                font-size: 13px;
-                            "
-                        >
-                            This enquiry was submitted through
-                            the Nexus Techworks website.
-                        </p>
-
-                    </div>
-
+            const html = `
+                <div style="font-family:Arial,sans-serif;line-height:1.7">
+                    <h2>New Website Enquiry</h2>
+                    <p><strong>Name:</strong> ${escapeHtml(enquiry.name)}</p>
+                    <p><strong>Email:</strong> ${escapeHtml(enquiry.email)}</p>
+                    <p><strong>Phone:</strong> ${escapeHtml(enquiry.phone || "Not provided")}</p>
+                    <p><strong>Company:</strong> ${escapeHtml(enquiry.company || "Not provided")}</p>
+                    <p><strong>Service:</strong> ${escapeHtml(enquiry.service)}</p>
+                    <p><strong>Budget:</strong> ${escapeHtml(enquiry.budget || "Not provided")}</p>
+                    <p><strong>Message:</strong><br>${escapeHtml(enquiry.message).replace(/\n/g, "<br>")}</p>
+                    <p><strong>Enquiry ID:</strong> ${enquiry._id}</p>
                 </div>
-            `,
-        };
+            `;
 
+            await transporter.sendMail({
+                from: `"Nexus Techworks Website" <${process.env.SMTP_USER}>`,
+                to: "nexustechworks30@gmail.com",
+                replyTo: enquiry.email,
+                subject: `New Nexus Techworks Enquiry - ${enquiry.service}`,
+                text: [
+                    `Name: ${enquiry.name}`,
+                    `Email: ${enquiry.email}`,
+                    `Phone: ${enquiry.phone || "Not provided"}`,
+                    `Company: ${enquiry.company || "Not provided"}`,
+                    `Service: ${enquiry.service}`,
+                    `Budget: ${enquiry.budget || "Not provided"}`,
+                    `Message: ${enquiry.message}`,
+                    `Enquiry ID: ${enquiry._id}`,
+                ].join("\n"),
+                html,
+            });
+        } catch (emailError) {
+            console.error(
+                "Enquiry saved, but notification email failed:",
+                emailError.message
+            );
+        }
 
-        await transporter.sendMail(mailOptions);
-
-
-        return res.status(200).json({
+        return res.status(201).json({
             success: true,
-            message: "Enquiry sent successfully.",
+            message: "Enquiry received successfully.",
         });
-
-
     } catch (error) {
-
-        console.error(
-            "Contact email error:",
-            error
-        );
+        console.error("Save contact enquiry error:", error);
 
         return res.status(500).json({
             success: false,
-            message: "Unable to send enquiry.",
+            message: "Unable to save your enquiry. Please try again.",
         });
     }
 });
-
 
 export default router;

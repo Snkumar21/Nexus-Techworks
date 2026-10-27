@@ -1,18 +1,12 @@
-{
-    title: String,
-    description: String,
+import mongoose from "mongoose";
 
-    price: Number,
+const serviceSchema = new mongoose.Schema({
+  title: { type: String, required: true, trim: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true, min: 0 }, // USD base price
+  priceType: { type: String, enum: ["starting", "monthly"], default: "starting" },
+  published: { type: Boolean, default: false },
+  sortOrder: { type: Number, default: 0 },
+}, { timestamps: true });
 
-    priceType: {
-        type: String,
-        enum: ["starting", "monthly"]
-    },
-
-    isActive: Boolean,
-
-    order: Number,
-
-    createdAt: Date,
-    updatedAt: Date
-}
+export default mongoose.models.Service || mongoose.model("Service", serviceSchema);

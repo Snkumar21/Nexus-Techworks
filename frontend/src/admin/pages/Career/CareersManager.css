@@ -1,0 +1,79 @@
+
+.career-manager {
+    padding: 28px;
+    color: var(--text-primary);
+}
+
+.career-manager-heading,
+.career-manager-list {
+    margin-bottom: 28px;
+}
+
+.career-manager-form {
+    display: grid;
+    gap: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.career-manager-form input:not([type="checkbox"]),
+.career-manager-form textarea {
+    width: 100%;
+    padding: 12px;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font: inherit;
+}
+
+.career-manager-checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.career-manager-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.career-manager-actions button {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.career-manager-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.career-manager-item h4 {
+    margin-bottom: 6px;
+}
+
+.career-manager-item p,
+.career-manager-item small {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+    .career-manager {
+        padding: 16px;
+    }
+
+    .career-manager-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,7 @@
+.admin-placeholder{min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--bg-secondary);color:var(--text-primary)}
+.admin-placeholder-card{width:min(100%,620px);padding:clamp(28px,6vw,56px);background:var(--card-background);border:1px solid var(--border-color);border-radius:var(--radius-md);text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.08)}
+.admin-placeholder-badge{display:inline-block;margin-bottom:18px;color:var(--primary-color);font-size:12px;font-weight:800;letter-spacing:1.5px}
+.admin-placeholder h1{margin:0 0 14px;font-size:clamp(32px,7vw,52px)}
+.admin-placeholder p{margin:0 auto 22px;max-width:520px;color:var(--text-secondary);line-height:1.7}
+.admin-placeholder-path{display:inline-block;margin-bottom:24px;padding:9px 14px;border-radius:8px;background:var(--bg-tertiary);font-family:monospace;font-size:13px}
+.admin-placeholder-link{display:block;width:max-content;margin:0 auto;padding:12px 18px;border-radius:8px;background:var(--primary-color);color:#fff;font-weight:700;text-decoration:none}
