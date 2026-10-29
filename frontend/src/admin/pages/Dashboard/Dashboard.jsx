@@ -89,11 +89,14 @@ const Dashboard = () => {
                 const data = await response.json();
 
                 if (
-                    !data ||
-                    !data.counts ||
+                    !response.ok ||
+                    data?.success === false ||
+                    !data?.counts ||
                     typeof data.counts !== "object"
                 ) {
-                    throw new Error("Invalid dashboard API response");
+                    throw new Error(
+                        data?.message || "Invalid dashboard API response"
+                    );
                 }
 
                 setStats(data.counts);

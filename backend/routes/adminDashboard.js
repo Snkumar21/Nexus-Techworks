@@ -1,27 +1,61 @@
 import { Router } from "express";
 import mongoose from "mongoose";
+import requireAdmin from "../middleware/requireAdmin.js";
 
 const router = Router();
 
-// IMPORTANT: mount behind a real server-side authentication middleware in production.
-// Collection names must match the names in your MongoDB database.
-router.get("/stats", async (_req, res) => {
-  try {
-    if (mongoose.connection.readyState !== 1) {
-      return res.status(503).json({ message: "Database not connected" });
+// All dashboard statistics require an authenticated admin.
+router.use(requireAdmin);
+
+router.get("/stats", async (req, res) => {
+    try {
+        if (mongoose.connection.readyState !== 1) {
+            return res.status(503).json({
+                success: false,
+                message: "Database not connected",
+            });
+        }
+
+        const db = mongoose.connection.db;
+
+        const [ services, projects, enquiries, marketplace, ] = 
+          await Promise.all([
+            db.collection("services").countDocuments({
+                published: true,
+            }),
+
+            db.collection("projects").countDocuments({
+                published: true,
+            }),
+
+            db.collection("enquiries").countDocuments({
+                status: "New",
+            }),
+
+            db.collection("marketplaces").countDocuments({
+                isActive: true,
+            }),
+        ]);
+
+        res.set("Cache-Control", "no-store");
+
+        return res.json({
+            success: true,
+            counts: {
+                services,
+                projects,
+                enquiries,
+                marketplace,
+            },
+        });
+    } catch (error) {
+        console.error("Dashboard stats error:", error);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to load dashboard stats",
+        });
     }
-    const db = mongoose.connection.db;
-    const count = (collection, filter = {}) => db.collection(collection).countDocuments(filter);
-    const [services, projects, enquiries, marketplace] = await Promise.all([
-      count("services", { isActive: true }),
-      count("projects", { isActive: true }),
-      count("enquiries", { status: "new" }),
-      count("marketplaces", { isActive: true }),
-    ]);
-    return res.json({ counts: { services, projects, enquiries, marketplace } });
-  } catch (error) {
-    console.error("Dashboard stats error:", error);
-    return res.status(500).json({ message: "Failed to load dashboard stats" });
-  }
 });
+
 export default router;

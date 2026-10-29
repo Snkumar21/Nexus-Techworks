@@ -8,6 +8,7 @@ import MongoStore from "connect-mongo";
 import contactRoute from "./routes/contact.js";
 import servicesRoutes from "./routes/servicesRoutes.js";
 import adminAuthRoutes from "./routes/adminAuthRoutes.js";
+import adminDashboardRoutes from "./routes/adminDashboard.js";
 import aboutRoutes from "./routes/aboutRoutes.js";
 import projectsRoutes from "./routes/projectsRoutes.js";
 import careersRoutes from "./routes/careersRoutes.js";
@@ -102,6 +103,7 @@ app.use(
     },
     adminAuthRoutes
 );
+app.use("/api/admin/dashboard", adminDashboardRoutes);
 app.use("/api/about", aboutRoutes);
 app.use("/api/contact", contactRoute);
 app.use(
